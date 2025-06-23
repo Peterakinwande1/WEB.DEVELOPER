@@ -1,20 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Tolu & Gbemi Introduction Ceremony</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tolu & Gbemi Introduction Ceremony</title>
 
-<!-- AOS Animate on Scroll CSS -->
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- AOS Animate on Scroll CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-<!-- Link to your CSS -->
-<link rel="stylesheet" href="wedding.css" />
+  <style>
+    /* --- Reset & base --- */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: #faf7f2;
+      color: #333;
+      line-height: 1.6;
+    }
+    .wrapper {
+      max-width: 800px;
+      margin: auto;
+      padding: 0 1rem 3rem;
+    }
+    nav {
+      margin: 1rem 0;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      display: inline-flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #8B0000;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #a40000;
+    }
+
+    /* --- Header Slideshow --- */
+    header {
+      position: relative;
+      height: 60vh;
+      max-width: 800px;
+      margin: 1rem auto 2rem;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('bg1.jpg') center/cover no-repeat;
+      animation: slideHero 15s infinite;
+      opacity: 0.75;
+      z-index: -1;
+    }
+    @keyframes slideHero {
+      0%   { background-image: url('bg1.jpg'); }
+      50%  { background-image: url('bg2.jpg'); }
+      100% { background-image: url('bg3.jpg'); }
+    }
+    .hero-text h1 {
+      font-size: 2.5rem;
+      color: #fff;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #fff;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+      margin-top: 0.5rem;
+    }
+
+    /* Floating countdown in header */
+    .floating-countdown {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.8);
+      padding: 0.6rem 1.5rem;
+      border-radius: 20px;
+      color: #8B0000;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: flex;
+      gap: 0.8rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Sections */
+    section {
+      background: #fff;
+      border-radius: 10px;
+      padding: 2rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2rem;
+      color: #8B0000;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    section h2::after {
+      content: "";
+      height: 3px;
+      width: 50px;
+      background: #8B0000;
+      display: block;
+      margin: 0.5rem auto 1.5rem;
+    }
+
+    /* Details grid */
+    .details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 1rem;
+    }
+    .details div {
+      padding: 1rem;
+      background: #fff2ea;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* RSVP form */
+    .rsvp {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .rsvp input, .rsvp button {
+      width: 100%;
+      max-width: 360px;
+      padding: 0.8rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .rsvp button {
+      background: #8B0000;
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .rsvp button:hover {
+      background: #a40000;
+    }
+
+    /* Links styling */
+    .links {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .links a {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border: 2px solid transparent;
+      color: #8B0000;
+    }
+    .links a:hover {
+      transform: scale(1.05);
+    }
+    .links a[href*="wa.me"] {
+      background-color: #25D366;
+      color: white;
+      border-color: #1ebe5b;
+    }
+    .links a.zoom,
+    .links a[href*="zoom"] {
+      background-color: #2D8CFF;
+      color: white;
+      border-color: #0077ff;
+    }
+
+    /* Countdown section */
+    #countdown {
+      font-weight: 700;
+    }
+    .countdown-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .countdown-wrapper div {
+      text-align: center;
+    }
+    .countdown-wrapper span {
+      font-size: 2.5rem;
+      color: #8B0000;
+      display: block;
+    }
+    .countdown-wrapper label {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* Gallery */
+    #gallery {
+      background: #fff2ea;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .gallery-grid a {
+      display: block;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-grid a:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #8B0000;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 1.5rem;
+      border-radius: 0 0 12px 12px;
+      font-style: italic;
+      font-weight: 500;
+      box-shadow: 0 -2px 8px rgba(139, 0, 0, 0.4);
+      margin-top: 2rem;
+      font-size: 1rem;
+    }
+
+    /* Lightbox */
+    #lightbox-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    #lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #fff;
+    }
+
+    /* Music toggle button */
+    #music-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: #fff;
+      color: #8B0000;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.2s ease;
+    }
+    #music-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* Responsive */
+    @media (max-width:600px) {
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      footer {
+        margin-top: auto;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="wrapper">
-
-    <!-- Navigation -->
     <nav>
       <ul>
         <li><a href="#about">Our Story</a></li>
@@ -25,7 +329,6 @@
       </ul>
     </nav>
 
-    <!-- Header with slideshow and floating countdown -->
     <header>
       <div class="hero-text" data-aos="fade-down">
         <h1>Tolu & Gbemi</h1>
@@ -40,28 +343,17 @@
     </header>
 
     <main>
-
       <section id="about" data-aos="fade-up">
         <h2>Our Love Story</h2>
-        <p>From friendship to love, from laughter to forever — our journey has been full of beautiful memories.
-           We’re excited to begin our next chapter with the blessings of our families.</p>
+        <p>From friendship to love, from laughter to forever — our journey has been full of beautiful memories. We’re excited to begin our next chapter with the blessings of our families.</p>
       </section>
 
       <section id="details" data-aos="fade-right">
         <h2>Ceremony Details</h2>
         <div class="details">
-          <div>
-            <h3>📍 Location</h3>
-            <p>27 Ode Street, Ikoya</p>
-          </div>
-          <div>
-            <h3>📅 Date & Time</h3>
-            <p>Saturday, August 16, 2025<br>Time: 12:00 PM WAT</p>
-          </div>
-          <div>
-            <h3>🎨 Dress Code</h3>
-            <p>Traditional Attire<br>Colors: Wine & Gold</p>
-          </div>
+          <div><h3>📍 Location</h3><p>27 Ode Street, Ikoya</p></div>
+          <div><h3>📅 Date & Time</h3><p>Saturday, August 16, 2025<br>Time: 12:00 PM WAT</p></div>
+          <div><h3>🎨 Dress Code</h3><p>Traditional Attire<br>Colors: Wine & Gold</p></div>
         </div>
       </section>
 
@@ -74,8 +366,8 @@
           <button type="submit">Submit RSVP</button>
         </form>
         <div class="links">
-          <a href="https://wa.me/2348106384896" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
-          <a href="https://zoom.us/j/1234567890?pwd=example" target="_blank" rel="noopener noreferrer" class="zoom">Join via Zoom</a>
+          <a href="https://wa.me/2348106384896" target="_blank">WhatsApp Us</a>
+          <a href="https://zoom.us/j/1234567890?pwd=example" target="_blank" class="zoom">Join via Zoom</a>
         </div>
       </section>
 
@@ -85,50 +377,96 @@
           <a href="bg1.jpg" class="lightbox"><img src="bg1.jpg" alt="Engagement" /></a>
           <a href="bg2.jpg" class="lightbox"><img src="bg2.jpg" alt="Family moment" /></a>
           <a href="bg3.jpg" class="lightbox"><img src="bg3.jpg" alt="Traditional attire" /></a>
-          
         </div>
       </section>
 
       <section id="countdown" data-aos="flip-up">
         <h2>Countdown to Our Day</h2>
-        <div class="countdown-wrapper" aria-live="polite" aria-atomic="true">
+        <div class="countdown-wrapper" aria-live="polite">
           <div><span id="days">00</span><label>Days</label></div>
           <div><span id="hours">00</span><label>Hours</label></div>
           <div><span id="minutes">00</span><label>Minutes</label></div>
           <div><span id="seconds">00</span><label>Seconds</label></div>
         </div>
       </section>
-
     </main>
 
     <footer>
       <p>With love, Tolu & Gbemi • © 2025</p>
     </footer>
-
   </div>
 
-  <!-- Lightbox overlay -->
-  <div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image preview">
-    <img id="lightbox-img" src="" alt="Enlarged view" />
-  </div>
-
-  <!-- Background music -->
-  <audio id="bg-music" loop preload="auto" muted>
-    <source src="wedding-song.mp3" type="audio/mp3" />
-    Your browser does not support the audio element.
-  </audio>
+  <div id="lightbox-overlay" role="dialog"><img id="lightbox-img" src="" alt="Enlarged view" /></div>
+  <audio id="bg-music" loop preload="auto" muted><source src="wedding-song.mp3" type="audio/mp3" /></audio>
   <button id="music-toggle" aria-label="Toggle Music">🔈</button>
 
-  <!-- AOS Animate on Scroll JS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 800,
-      once: true
+    AOS.init({ duration: 800, once: true });
+
+    function updateCountdown() {
+      const eventDate = new Date("2025-08-16T12:00:00+01:00").getTime();
+      const now = new Date().getTime();
+      const timeLeft = eventDate - now;
+      if (timeLeft < 0) return;
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+      const seconds = Math.floor((timeLeft / 1000) % 60);
+      const pad = (n) => n.toString().padStart(2, "0");
+      document.getElementById("days").textContent = pad(days);
+      document.getElementById("hours").textContent = pad(hours);
+      document.getElementById("minutes").textContent = pad(minutes);
+      document.getElementById("seconds").textContent = pad(seconds);
+      document.getElementById("cdays").textContent = pad(days);
+      document.getElementById("chours").textContent = pad(hours);
+      document.getElementById("cminutes").textContent = pad(minutes);
+      document.getElementById("cseconds").textContent = pad(seconds);
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const lightboxLinks = document.querySelectorAll('.lightbox');
+    const lightboxOverlay = document.getElementById('lightbox-overlay');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        lightboxImg.src = this.href;
+        lightboxOverlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    lightboxOverlay.addEventListener('click', () => {
+      lightboxOverlay.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    function handleRSVP(e) {
+      e.preventDefault();
+      alert("Thank you for your RSVP! We will be in touch.");
+      e.target.reset();
+    }
+
+    const bgMusic = document.getElementById('bg-music');
+    const musicToggle = document.getElementById('music-toggle');
+    window.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.muted = false;
+        bgMusic.play();
+        musicToggle.textContent = '🔊';
+      }
+    }, { once: true });
+    musicToggle.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        musicToggle.textContent = '🔊';
+      } else {
+        bgMusic.pause();
+        musicToggle.textContent = '🔈';
+      }
     });
   </script>
-
-  <!-- Link to your JS -->
-  <script src="wedding.js"></script>
 </body>
 </html>
+
