@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tolu & Gbemi Introduction Ceremony</title>
+
+<!-- AOS Animate on Scroll CSS -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<!-- Link to your CSS -->
+<link rel="stylesheet" href="wedding.css" />
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#details">Details</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#countdown">Countdown</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header with slideshow and floating countdown -->
+    <header>
+      <div class="hero-text" data-aos="fade-down">
+        <h1>Tolu & Gbemi</h1>
+        <p>Introduction Ceremony • August 16, 2025 • Ikoya, Okitipupa local government, Ondo State, Nigeria.</p>
+      </div>
+      <div class="floating-countdown" aria-label="Countdown to wedding day">
+        <span id="cdays">00</span>d
+        <span id="chours">00</span>h
+        <span id="cminutes">00</span>m
+        <span id="cseconds">00</span>s
+      </div>
+    </header>
+
+    <main>
+
+      <section id="about" data-aos="fade-up">
+        <h2>Our Love Story</h2>
+        <p>From friendship to love, from laughter to forever — our journey has been full of beautiful memories.
+           We’re excited to begin our next chapter with the blessings of our families.</p>
+      </section>
+
+      <section id="details" data-aos="fade-right">
+        <h2>Ceremony Details</h2>
+        <div class="details">
+          <div>
+            <h3>📍 Location</h3>
+            <p>27 Ode Street, Ikoya</p>
+          </div>
+          <div>
+            <h3>📅 Date & Time</h3>
+            <p>Saturday, August 16, 2025<br>Time: 12:00 PM WAT</p>
+          </div>
+          <div>
+            <h3>🎨 Dress Code</h3>
+            <p>Traditional Attire<br>Colors: Wine & Gold</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="rsvp" data-aos="fade-left">
+        <h2>RSVP</h2>
+        <form class="rsvp" onsubmit="handleRSVP(event)">
+          <input type="text" placeholder="Full Name" required />
+          <input type="email" placeholder="Email Address" required />
+          <input type="number" placeholder="Number of Guests" required min="1" />
+          <button type="submit">Submit RSVP</button>
+        </form>
+        <div class="links">
+          <a href="https://wa.me/2348106384896" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+          <a href="https://zoom.us/j/1234567890?pwd=example" target="_blank" rel="noopener noreferrer" class="zoom">Join via Zoom</a>
+        </div>
+      </section>
+
+      <section id="gallery" data-aos="zoom-in">
+        <h2>Our Journey in Photos</h2>
+        <div class="gallery-grid">
+          <a href="bg1.jpg" class="lightbox"><img src="bg1.jpg" alt="Engagement" /></a>
+          <a href="bg2.jpg" class="lightbox"><img src="bg2.jpg" alt="Family moment" /></a>
+          <a href="bg3.jpg" class="lightbox"><img src="bg3.jpg" alt="Traditional attire" /></a>
+          
+        </div>
+      </section>
+
+      <section id="countdown" data-aos="flip-up">
+        <h2>Countdown to Our Day</h2>
+        <div class="countdown-wrapper" aria-live="polite" aria-atomic="true">
+          <div><span id="days">00</span><label>Days</label></div>
+          <div><span id="hours">00</span><label>Hours</label></div>
+          <div><span id="minutes">00</span><label>Minutes</label></div>
+          <div><span id="seconds">00</span><label>Seconds</label></div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>With love, Tolu & Gbemi • © 2025</p>
+    </footer>
+
+  </div>
+
+  <!-- Lightbox overlay -->
+  <div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image preview">
+    <img id="lightbox-img" src="" alt="Enlarged view" />
+  </div>
+
+  <!-- Background music -->
+  <audio id="bg-music" loop preload="auto" muted>
+    <source src="wedding-song.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+  <button id="music-toggle" aria-label="Toggle Music">🔈</button>
+
+  <!-- AOS Animate on Scroll JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+
+  <!-- Link to your JS -->
+  <script src="wedding.js"></script>
+</body>
+</html>
