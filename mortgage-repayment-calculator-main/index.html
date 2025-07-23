@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Mortgage repayment calculator</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+:root {
+  --yellow: #b8e100;
+  --yellow-hover: #d0ff2a;
+  --dark-blue: #1e2a38;
+  --light-blue: #f0f8ff;
+  --white: #ffffff;
+  --gray: #dcdcdc;
+  --font: "Segoe UI", sans-serif;
+  --border-radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: #e8f3fa;
+  color: #0f172a;
+}
+
+.container {
+  max-width: 960px;
+  margin: 2rem auto;
+  display: flex;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.form-section {
+  flex: 1;
+  padding: 2rem;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clear-btn {
+  background: none;
+  border: none;
+  color: #1e2a38;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--gray);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.prefix, .suffix {
+  background: #f0f8ff;
+  padding: 0.75rem;
+  color: #1e2a38;
+}
+
+.dual-inputs {
+  display: flex;
+  gap: 1rem;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.radio-box {
+  border: 1px solid var(--gray);
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radio-box input {
+  accent-color: var(--yellow);
+}
+
+.radio-box.active {
+  background-color: #f7fbdc;
+  border-color: var(--yellow);
+}
+
+.calculate-btn {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--yellow);
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.calculate-btn:hover {
+  background: var(--yellow-hover);
+}
+
+.results-section {
+  flex: 1;
+  background: var(--dark-blue);
+  color: var(--white);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.placeholder {
+  text-align: center;
+}
+
+.placeholder img {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+
+.result-card {
+  background: #12202f;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.result-card h3 {
+  font-size: 2rem;
+  color: var(--yellow);
+  margin: 0.5rem 0;
+}
+
+.result-card h4 {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .results-section {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+  }
+
+  .dual-inputs {
+    flex-direction: column;
+  }
+}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="form-section">
+      <div class="form-header">
+        <h1>Mortgage Calculator</h1>
+        <button id="clearAll" class="clear-btn">Clear All</button>
+      </div>
+
+      <form id="calculatorForm">
+        <label>
+          Mortgage Amount
+          <div class="input-group">
+            <span class="prefix">£</span>
+            <input type="number" id="amount" required />
+          </div>
+        </label>
+
+        <div class="dual-inputs">
+          <label>
+            Mortgage Term
+            <div class="input-group">
+              <input type="number" id="term" required />
+              <span class="suffix">years</span>
+            </div>
+          </label>
+
+          <label>
+            Interest Rate
+            <div class="input-group">
+              <input type="number" step="0.01" id="rate" required />
+              <span class="suffix">%</span>
+            </div>
+          </label>
+        </div>
+
+        <fieldset>
+          <legend>Mortgage Type</legend>
+          <label class="radio-box active">
+            <input type="radio" name="type" value="repayment" checked />
+            Repayment
+          </label>
+          <label class="radio-box">
+            <input type="radio" name="type" value="interest" />
+            Interest Only
+          </label>
+        </fieldset>
+
+        <button type="submit" class="calculate-btn">
+          <img src="./assets/images/icon-calculator.svg" alt="calculator icon" />
+          Calculate Repayments
+        </button>
+      </form>
+    </section>
+
+    <section class="results-section">
+      <div id="resultContent" class="placeholder">
+        <img src="./assets/images/illustration-empty.svg" alt="empty" />
+        <h2>Results shown here</h2>
+        <p>Complete the form and click “calculate repayments” to see what your monthly repayments would be.</p>
+      </div>
+      <div id="resultDisplay" class="hidden">
+        <h2>Your results</h2>
+        <p class="desc">Based on the info provided. Adjust the form and click calculate again.</p>
+        <div class="result-card">
+          <p>Your monthly repayments</p>
+          <h3 id="monthlyPayment">£0.00</h3>
+          <hr />
+          <p>Total you'll repay over the term</p>
+          <h4 id="totalRepayment">£0.00</h4>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+   document.getElementById("clearAll").addEventListener("click", () => {
+  document.getElementById("calculatorForm").reset();
+  document.getElementById("resultDisplay").classList.add("hidden");
+  document.getElementById("resultContent").classList.remove("hidden");
+});
+
+const radioBoxes = document.querySelectorAll(".radio-box");
+radioBoxes.forEach((box) =>
+  box.addEventListener("click", () => {
+    radioBoxes.forEach((b) => b.classList.remove("active"));
+    box.classList.add("active");
+    box.querySelector("input").checked = true;
+  })
+);
+
+document.getElementById("calculatorForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const amount = parseFloat(document.getElementById("amount").value);
+  const term = parseFloat(document.getElementById("term").value);
+  const rate = parseFloat(document.getElementById("rate").value);
+  const type = document.querySelector('input[name="type"]:checked').value;
+
+  if (!amount || !term || !rate) return;
+
+  const monthlyRate = rate / 100 / 12;
+  const numberOfPayments = term * 12;
+
+  let monthly, total;
+
+  if (type === "repayment") {
+    monthly = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+    total = monthly * numberOfPayments;
+  } else {
+    monthly = amount * monthlyRate;
+    total = monthly * numberOfPayments;
+  }
+
+  document.getElementById("monthlyPayment").textContent = `£${monthly.toFixed(2)}`;
+  document.getElementById("totalRepayment").textContent = `£${total.toFixed(2)}`;
+
+  document.getElementById("resultDisplay").classList.remove("hidden");
+  document.getElementById("resultContent").classList.add("hidden");
+});
+  </script>
+</body>
+</html>
